@@ -113,6 +113,7 @@ echo $html->renderDocument(
 	[
 		$html->tagHasChildren('h1', [], 'Hello, world!'),
 	],
+    [],
     [
         'lang' => 'en'
     ],
