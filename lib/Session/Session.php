@@ -31,6 +31,18 @@ class Session {
 	 * @param ?string $session_id The session ID, or null
 	 */
 	public function __construct(?string $session_id) {
+		if ($session_id === null) {
+			if (array_key_exists(IX_ENVBASE . "_SESSIONCOOKIE", $_ENV)) {
+				if (array_key_exists($_ENV[IX_ENVBASE . "_SESSIONCOOKIE"], $_COOKIE)) {
+					$session_id = $_COOKIE[$_ENV[IX_ENVBASE . "_SESSIONCOOKIE"]];
+				}
+			}
+
+			if (empty(trim($session_id ?? ''))) {
+				$session_id = null;
+			}
+		}
+
 		$this->set_session_id($session_id);
 		$this->session_data = [];
 	}
