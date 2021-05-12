@@ -41,8 +41,16 @@ class Controller {
 			[$this, $request, $response],
 		);
 
-		// Invoke request method, storing the response
-		$response = $this->$reqMethod($request, $response, $args);
+		// Invoke request method, storing the response, handling exceptions
+		try {
+			$response = $this->$reqMethod($request, $response, $args);
+		} catch (\EasyCSRF\Exceptions\InvalidCsrfTokenException $e) {
+			// Invalid CSRF, run the invalidCsrfToken hooks
+			list($_, $request, $response) = HookMachine::execute(
+				[self::class, 'request', 'invalidCSRFToken'],
+				[$this, $request, $response],
+			);
+		}
 
 		// Run the postRequestMethod hooks
 		list($_, $request, $response) = HookMachine::execute(
