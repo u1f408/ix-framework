@@ -24,6 +24,7 @@ final class ContainerHooksTwig {
 				array_filter([IX_BASE . '/templates']),
 				[
 					'cache' => IX_BASE . '/cache/templates',
+					'debug' => in_array($_ENV['APP_ENV'], ['development', 'test']),
 				],
 			);
 		});
