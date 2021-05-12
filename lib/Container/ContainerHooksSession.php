@@ -2,7 +2,7 @@
 declare(strict_types=1);
 namespace ix\Container;
 
-use \ix\Session\Session;
+use \ix\Session\SessionContainer;
 use \ix\Container\Container;
 use \EasyCSRF\EasyCSRF;
 
@@ -16,7 +16,7 @@ final class ContainerHooksSession {
 	 */
 	public static function hookContainerSession(array $key, Container $container) {
 		$container->set('session', function() {
-			return new Session(null);
+			return SessionContainer::get();
 		});
 
 		return $container;
