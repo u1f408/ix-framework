@@ -19,7 +19,8 @@ final class ControllerHookInvalidCSRFTokenErrorPage {
 		/** @var Controller $controller */
 		/** @var Request $request */
 		/** @var Response $response */
-		list($controller, $request, $response) = $params;
+		/** @var \Exception $exception */
+		list($controller, $request, $response, $exception) = $params;
 		$html = new HtmlRenderer();
 
 		$response->getBody()->write($html->renderDocument(
@@ -33,10 +34,11 @@ final class ControllerHookInvalidCSRFTokenErrorPage {
 				$html->tagHasChildren('div', ['class' => 'main error popup-container'], ...[
 					$html->tagHasChildren('h1', [], 'CSRF verification error'),
 					$html->tagHasChildren('p', [], 'Please refresh the page and try your action again.'),
+					$html->tagHasChildren('p', [], htmlspecialchars($exception->getMessage())),
 				]),
 			],
 		));
 
-		return [$controller, $request, $response];
+		return [$controller, $request, $response, $exception];
 	}
 }
