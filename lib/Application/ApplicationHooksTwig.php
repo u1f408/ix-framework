@@ -11,7 +11,7 @@ final class ApplicationHooksTwig {
 	 *
 	 * @param string[] $key Hook key (unused)
 	 * @param \Slim\App $app The App instance
-	 * @return \Slim\APp The App instance
+	 * @return \Slim\App The App instance
 	 */
 	public static function hookApplicationMiddlewareTwig(array $key, \Slim\App $app): \Slim\App {
 		$app->add(TwigMiddleware::createFromContainer($app));
