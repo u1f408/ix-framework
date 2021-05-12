@@ -1,6 +1,6 @@
 <?php
 declare(strict_types=1);
-namespace ix;
+namespace ix\Application;
 
 use \ix\HookMachine;
 use \ix\Container\Container;
