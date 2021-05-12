@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b4e577da0d38ad964b0c6d3dc2eac99d",
+    "content-hash": "c7ee3ff4b4653d2c49df9be65ef830f3",
     "packages": [
         {
             "name": "fig/http-message-util",
@@ -61,6 +61,55 @@
                 "source": "https://github.com/php-fig/http-message-util/tree/1.1.5"
             },
             "time": "2020-11-24T22:02:12+00:00"
+        },
+        {
+            "name": "gilbitron/easycsrf",
+            "version": "1.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/gilbitron/EasyCSRF.git",
+                "reference": "f1976299d23da712365c42a08b25bbf6eecd26f6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/gilbitron/EasyCSRF/zipball/f1976299d23da712365c42a08b25bbf6eecd26f6",
+                "reference": "f1976299d23da712365c42a08b25bbf6eecd26f6",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^9"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "EasyCSRF\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Gilbert Pellegrom",
+                    "email": "gilbert@pellegrom.me"
+                }
+            ],
+            "description": "A simple, standalone CSRF protection library",
+            "support": {
+                "issues": "https://github.com/gilbitron/EasyCSRF/issues",
+                "source": "https://github.com/gilbitron/EasyCSRF/tree/1.4.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/gilbitron",
+                    "type": "github"
+                }
+            ],
+            "time": "2021-01-19T10:02:27+00:00"
         },
         {
             "name": "nikic/fast-route",
