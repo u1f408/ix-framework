@@ -2,6 +2,8 @@
 declare(strict_types=1);
 namespace ix\Controller;
 
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Psr\Http\Message\ResponseInterface as Response;
 use \ix\Controller\Controller;
 use \ix\Helpers\HtmlRenderer;
 
