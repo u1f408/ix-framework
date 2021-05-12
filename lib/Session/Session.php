@@ -30,7 +30,7 @@ class Session {
 	 *
 	 * @param ?string $session_id The session ID, or null
 	 */
-	public function __construct(?string $session_id) {
+	public function __construct(?string $session_id = null) {
 		if ($session_id === null) {
 			if (array_key_exists(IX_ENVBASE . "_SESSIONCOOKIE", $_ENV)) {
 				if (array_key_exists($_ENV[IX_ENVBASE . "_SESSIONCOOKIE"], $_COOKIE)) {
