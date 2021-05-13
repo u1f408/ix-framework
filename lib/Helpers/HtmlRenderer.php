@@ -57,7 +57,7 @@ class HtmlRenderer {
 		array $body,
 		array $htmlAttributes = [],
 		array $bodyAttributes = [],
-		string $doctype = '<!DOCTYPE html>',
+		string $doctype = '<!DOCTYPE html>'
 	): string {
 		// Execute renderDocument hooks
 		list($_, $htmlAttributes, $head, $bodyAttributes, $body, $doctype) =
