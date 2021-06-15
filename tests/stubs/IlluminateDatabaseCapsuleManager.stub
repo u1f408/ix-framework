@@ -1,0 +1,20 @@
+<?php
+namespace Illuminate\Database\Capsule;
+
+class Manager {
+    /**
+     * @param array<string, mixed> $options
+     * @return void
+     */
+    public function addConnection(array $options) {}
+
+    /**
+     * @return void
+     */
+    public function setAsGlobal() {}
+
+    /**
+     * @return void
+     */
+    public function bootEloquent(): void {}
+}
