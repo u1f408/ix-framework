@@ -36,10 +36,11 @@ class Controller {
 		}
 
 		// Run the preRequestMethod hooks
-		list($_, $request, $response) = HookMachine::execute(
+		list($_, $request, $response, $pre_abort) = HookMachine::execute(
 			[self::class, 'request', 'preRequestMethod'],
-			[$this, $request, $response],
+			[$this, $request, $response, false],
 		);
+		if ($pre_abort) return $response;
 
 		// Invoke request method, storing the response, handling exceptions
 		try {
