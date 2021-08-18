@@ -32,7 +32,11 @@ class Controller {
 		// If we don't - throw an HTTP 405 exception.
 		$reqMethod = "request{$request->getMethod()}";
 		if (!method_exists($this, $reqMethod)) {
-			throw new HttpMethodNotAllowedException($request);
+			if (!method_exists($this, "requestAny")) {
+				throw new HttpMethodNotAllowedException($request);
+			}
+
+			$reqMethod = "requestAny";
 		}
 
 		// Run the preRequestMethod hooks
