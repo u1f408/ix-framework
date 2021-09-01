@@ -66,4 +66,18 @@ class Controller {
 		// And finally, return our response
 		return $response;
 	}
+
+	/**
+	 * @param string $routeName Route name
+	 * @param array<string, string> $data Route placeholders
+	 * @param array<string, string> $queryParams Query parameters
+	 * @return string
+	 */
+	public function urlFor(string $routeName, array $data = [], array $queryParams = []): string {
+		return $this->container
+			->get('Slim\\App')
+			->getRouteCollector()
+			->getRouteParser()
+			->urlFor($routeName, $data, $queryParams);
+	}
 }
