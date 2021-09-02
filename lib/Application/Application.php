@@ -2,10 +2,11 @@
 declare(strict_types=1);
 namespace ix\Application;
 
-use \ix\HookMachine;
-use \ix\Container\Container;
-use \DI\Bridge\Slim\Bridge as DIBridge;
-use \Slim\App as SlimApp;
+use ix\HookMachine;
+use ix\Container\Container;
+use DI\Bridge\Slim\Bridge as DIBridge;
+use Slim\App as SlimApp;
+use Selective\BasePath\BasePathMiddleware;
 
 class Application {
 	/**
@@ -26,8 +27,15 @@ class Application {
 		// Run pre-middleware-addition hooks
 		HookMachine::execute([self::class, 'create_app', 'preMiddleware'], $app);
 
-		// Add the last of the middleware
+		// Handle base path stuff
+		if (array_key_exists('APP_BASE_PATH', $_ENV)) {
+			$app->setBasePath($_ENV['APP_BASE_PATH']);
+		}
+
+		// Add routing middleware
 		$app->addRoutingMiddleware();
+
+		// Add error middleware
 		$app->addErrorMiddleware(
 			in_array($_ENV['APP_ENV'], ['development', 'test']),
 			true,
